@@ -2,7 +2,7 @@
 // const products=require('./data/products')
 // const dotenv=require('dotenv')
 // const app=express()
-
+import path from 'path'
 import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
@@ -11,6 +11,7 @@ import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import {notFound , errorHandler} from './middleware/errorMiddleware.js'
 
+
 dotenv.config()
 
 connectDB()
@@ -18,6 +19,7 @@ connectDB()
 const app=express()
 
 app.use(express.json())
+
 
 
 app.use('/api/products',productRoutes) 
@@ -41,6 +43,7 @@ if(process.env.NODE_ENV === 'production' ){
         res.send('API is running...')
     }) 
 }
+
 
 app.use(notFound)
 
